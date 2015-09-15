@@ -81,7 +81,7 @@ router.post('/', function(req, res) {
 
 			connection.query(updateQuery,function(err,rows){
 	            if(err) {
-	                res.json({"Message" : "There was a problem with this action","desc":err});
+	                res.json({"Message" : "There was a problem with this action"});
 	            } else {
 	            	if(rows.changedRows <=0 ) {
 	            		//Check if any rows are changed

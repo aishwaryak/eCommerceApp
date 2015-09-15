@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
         connection.query(query,function(err,rows){
             if(err) {
             	console.log(query);
-                res.json({"Success" : false, "Message" : "There was a problem with your registration","desc":err});
+                res.json({"Success" : false, "Message" : "There was a problem with your registration"});
             } else {
                 console.log(rows);
                 res.json({"Success" : true, "Message" : "Your account has been registered"});

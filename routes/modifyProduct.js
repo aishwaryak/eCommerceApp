@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 	if(role === "admin") {
 		connection.query(updateQuery,function(err,rows){
 		    if(err) {
-		        res.json({"Message" : "There was a problem with this action","desc":err});
+		        res.json({"Message" : "There was a problem with this action"});
 		    } else {
 		    	if(rows.changedRows <=0 ) {
 		    		res.json({"Message" : "No rows were updated."});
