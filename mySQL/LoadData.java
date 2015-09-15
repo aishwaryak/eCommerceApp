@@ -1,4 +1,4 @@
-package mySQLLoad;
+package mySQL;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
