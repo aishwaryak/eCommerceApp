@@ -12,8 +12,9 @@ todo
 --- view users - only by admin
 --- modify products - only by admin
 --- finish view products
-13. add price in products_table - sync with db and check if its changing any other field
+--- add price in products_table - sync with db and check if its changing any other field
 -- view users - sessionID is an input parameter
 --- remove desc from all error messages.
-16. check all input outputs
+--- check all input outputs
 --- Check if user has been already logged in before logging in again
+--- No session id required for view users

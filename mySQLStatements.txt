@@ -73,14 +73,3 @@ insert into users_table(firstname,lastname,role,address,city,state,zip,email,use
 insert into users_table(firstname,lastname,role,address,city,state,zip,email,username,password) values('Jenny','Admin','admin','3 C street','Pittsburgh','PA','15213','jadmin@g.com','jadmin','admin');
 
 SELECT * FROM users_table;
-
-------------------------------------------------------------------------------------------------
-SELECT p.product_id,p.asin,p.productTitle,p.productGroup,p.productDescription,c.category_name FROM products_table AS p,product_category_table AS pc,category_table AS c WHERE p.product_id = pc.product_id AND pc.category_id = c.category_id AND c.category_name = 'Biographies & Memoirs';
-
-
-SELECT p.product_id,p.asin,p.productTitle,p.productGroup,p.productDescription,c.category_name FROM products_table AS p,product_category_table AS pc,category_table AS c WHERE p.product_id = pc.product_id AND pc.category_id = c.category_id AND productTitle LIKE '%"+keyword+"%' OR productDescription LIKE '%"+keyword+"%'" AND c.category_name = '"+categoryName+"';"
-
-
-SELECT p.product_id,p.asin,p.productTitle,p.productGroup,p.productDescription,c.category_name FROM products_table AS p,product_category_table AS pc,category_table AS c WHERE p.product_id = pc.product_id AND pc.category_id = c.category_id AND (p.productTitle LIKE '%the%' OR p.productDescription LIKE '%the%') AND c.category_name = 'books';
-
-"SELECT distinct p.product_id,p.asin,p.productTitle,p.productGroup,p.productDescription,c.category_name FROM products_table AS p,product_category_table AS pc,category_table AS c WHERE p.product_id = pc.product_id AND pc.category_id = c.category_id AND (p.productTitle LIKE '%"+keyword+"%' OR p.productDescription LIKE '%"+keyword+"%') AND c.category_name = '"+categoryName+"'";

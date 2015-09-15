@@ -77,7 +77,7 @@ router.post('/', function(req, res) {
 
 			updateQuery = mysql.format(updateQuery);
 
-			console.log("*"+updateQuery+"*");
+			//console.log("*"+updateQuery+"*");
 
 			connection.query(updateQuery,function(err,rows){
 	            if(err) {

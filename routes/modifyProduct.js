@@ -16,9 +16,12 @@ connection.connect();
 /* For modifying product information */
 
 router.post('/', function(req, res) {
+
 	var role = req.session.role;
 	var productId = "";
 	var updateQuery = "UPDATE products_table SET ";
+
+	//Read all parameters
 	for (var property in req.body) {
 		if(property === "productId") {
 			productId = req.body[property];
@@ -30,7 +33,7 @@ router.post('/', function(req, res) {
 	//Remove the final comma
 	updateQuery = updateQuery.substring(0, updateQuery.length - 2);
 	updateQuery = updateQuery+ " WHERE product_id = "+productId+"";
-	console.log(updateQuery);
+
 	if(role === "admin") {
 		connection.query(updateQuery,function(err,rows){
 		    if(err) {

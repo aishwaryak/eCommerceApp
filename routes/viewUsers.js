@@ -22,10 +22,6 @@ router.get('/', function(req, res) {
     var sessionID = req.sessionID;
     var userInputSessionID = req.query.sessionID;
 
-    if(typeof userInputSessionID != 'undefined' && typeof sessionID != 'undefined' && userInputSessionID === sessionID) {
-
-        //Check if the session IDs are the same.
-
          if(role === "admin") {
         //Only admin can view users
 
@@ -59,16 +55,8 @@ router.get('/', function(req, res) {
 
         } else {
             //If not admin, access forbidden
-            res.json({"Message":"Access Forbidden"});
+            res.json({"Message":"There was a problem with this action - only admin can access"});
         }
-
-    } else {
-        //If session ids dont match
-        res.send({"Message":"You have not provided the correct session ID."});
-    }
-
-   
-
 
 });
 

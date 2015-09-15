@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-/* For user log in */
+/* For viewing products */
 router.get('/', function(req, res) {
 
 	var product_list={};

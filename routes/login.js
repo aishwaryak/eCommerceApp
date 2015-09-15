@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
                     res.json({"Success" : false, "Message" : "MSQL Error."});
                 } else {
                      if(typeof rows == 'undefined' || rows.length <=0 ) {
-                        res.json({"Success" : false, "Message" : "That username and password combination was not correct"});
+                        res.json({"Success" : false, "err_message" : "That username and password combination was not correct"});
                      }
                      else {
 
@@ -37,16 +37,18 @@ router.post('/', function(req, res) {
                         req.session.userID = rows[0].user_id;
 
                         if(rows[0].role === "admin") {
+                            //Admin menu
                             res.json({"Success" : true, "AdminMenu1" : "AdminMenu...", "AdminMenu2" : "AdminMenu...", "SessionID" :req.sessionID});
                         } else {
+                            //Customer menu
                             res.json({"Success" : true, "Menu1" : "Menu1", "Menu2" : "Menu2", "SessionID" :req.sessionID});
                         }
                      }
                 }
             });
 
-        } //check if some user has been logged in already
-        else {
+        } 
+        else { //check if some user has been logged in already
             res.json({'Message':'User logged in already'});
         }
 });

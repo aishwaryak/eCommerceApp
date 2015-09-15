@@ -17,19 +17,19 @@ connection.connect();
 router.post('/', function(req, res) {
 
 	var query = "INSERT INTO ??(??,??,??,??,??,??,??,??,??,??) VALUES (?,?,?,?,?,?,?,?,?,?)";
-        //var table = ["user_login","user_email","user_password",req.body.email,md5(req.body.password)];
         
-        var table = ["users_table","firstname","lastname","role","address","city","state","zip","email","username","password",req.body.fName,req.body.lName,"customer",req.body.address,req.body.city,req.body.state,req.body.zip,req.body.email,req.body.uName,req.body.pWord];
-        query = mysql.format(query,table);
-        connection.query(query,function(err,rows){
-            if(err) {
-            	console.log(query);
-                res.json({"Success" : false, "Message" : "There was a problem with your registration"});
-            } else {
-                console.log(rows);
-                res.json({"Success" : true, "Message" : "Your account has been registered"});
-            }
-        });
+    var table = ["users_table","firstname","lastname","role","address","city","state","zip","email","username","password",req.body.fName,req.body.lName,"customer",req.body.address,req.body.city,req.body.state,req.body.zip,req.body.email,req.body.uName,req.body.pWord];
+    
+    query = mysql.format(query,table);
+    connection.query(query,function(err,rows){
+        if(err) {
+        	console.log(query);
+            res.json({"Success" : false, "Message" : "There was a problem with your registration"});
+        } else {
+            console.log(rows);
+            res.json({"Success" : true, "Message" : "Your account has been registered"});
+        }
+    });
 });
 
 module.exports = router;  
