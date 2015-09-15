@@ -1,0 +1,19 @@
+todo
+----
+1. session time of 15 mins
+2. role checking - admin/customer in certain pages
+--- Register - there was a problem with your registration(With existing user name)
+--- different menu output based on roles in login page
+--- logout - sessionID input and checking
+--- output for logout - you are not currently logged in 
+--- update contact information - using session id
+--- update contact infroamtion - username checking; Also use userid instead
+--- all updates - there was a problem with your action if not updated
+--- view users - only by admin
+--- modify products - only by admin
+--- finish view products
+13. add price in products_table - sync with db and check if its changing any other field
+-- view users - sessionID is an input parameter
+15. remove desc from all error messages.
+16. check all input outputs
+--- Check if user has been already logged in before logging in again
