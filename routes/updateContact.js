@@ -5,10 +5,11 @@ var mysql      = require('mysql');
 
 //Connectin to MYSQL Database
 var connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : 'mysql-instance1.c90szr4335oh.us-west-2.rds.amazonaws.com',
     user     : 'root',
-    password : 'root',
-    database : 'ecommercedb'
+    password : 'aishwarya',
+    database : 'ecommercedb',
+    port:3306
 });
 
 connection.connect();
