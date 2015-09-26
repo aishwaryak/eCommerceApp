@@ -2,40 +2,41 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
-
-//Connectin to MYSQL Database
-var connection = mysql.createConnection({
-    host     : 'mysql-instance1.c90szr4335oh.us-west-2.rds.amazonaws.com',
-    user     : 'root',
-    password : 'aishwarya',
-    database : 'ecommercedb',
-    port:3306
-});
-
-connection.connect();
+var connection = require('./../configuration/mySqlConnection');
 
 /* In order to update the contact */
 router.post('/', function(req, res) {
+
+	//TODO  - this in all files
+	////////////////////////////////////////////////////////////////////////
+    var checkSession = require('./../configuration/sessionExpired');
+
+    var hasExpired = checkSession.isSessionActive(req, function(response){
+        console.log(response);
+    });
+
+    ///////////////////////////////////////////////////////////////////////
 
 	var sessionID = req.sessionID;
 	var userInputSessionID = req.body.sessionID;
 	var isUserNameChanged = false; // To check if the username is changed.
 									// So that the session variable is updated.
+	var userId = req.session.userID;								
 
-	if(typeof userInputSessionID != 'undefined' && typeof sessionID != 'undefined' && userInputSessionID === sessionID) {
-
+	//if(typeof userInputSessionID != 'undefined' && typeof sessionID != 'undefined' && userInputSessionID === sessionID) {
+	  if(typeof userId != 'undefined') {	
 		//Check if the session IDs are the same.
 
 		var updateQuery = "UPDATE users_table SET ";
 		var flag = 0; //To check if any paramter is being sent at all in first place
 
-		if(typeof req.body.fName != 'undefined' && req.body.fName.length >0 ) {
+		if(typeof req.body.fname != 'undefined' && req.body.fname.length >0 ) {
 			flag = 1;
-			updateQuery = updateQuery+ "firstname = '"+req.body.fName+"' , ";
+			updateQuery = updateQuery+ "firstname = '"+req.body.fname+"' , ";
 		}
-		if(typeof req.body.lName != 'undefined' && req.body.lName.length >0 ) {
+		if(typeof req.body.lname != 'undefined' && req.body.lname.length >0 ) {
 			flag = 1;	
-			updateQuery = updateQuery+ "lastname = '"+req.body.lName+"' , ";
+			updateQuery = updateQuery+ "lastname = '"+req.body.lname+"' , ";
 		}
 		if(typeof req.body.address != 'undefined' && req.body.address.length >0 ) {
 			flag = 1;
@@ -57,14 +58,14 @@ router.post('/', function(req, res) {
 			flag = 1;
 			updateQuery = updateQuery+ "email = '"+req.body.email+"' , ";
 		}
-		if(typeof req.body.uName != 'undefined' && req.body.uName.length >0 ) {
+		if(typeof req.body.username != 'undefined' && req.body.username.length >0 ) {
 			flag = 1;
 			isUserNameChanged = true;
-			updateQuery = updateQuery+ "username = '"+req.body.uName+"' , ";
+			updateQuery = updateQuery+ "username = '"+req.body.username+"' , ";
 		}
-		if(typeof req.body.pWord != 'undefined' && req.body.pWord.length >0 ) {
+		if(typeof req.body.password != 'undefined' && req.body.password.length >0 ) {
 			flag = 1;
-			updateQuery = updateQuery+ "password = '"+req.body.pWord+"' , ";
+			updateQuery = updateQuery+ "password = '"+req.body.password+"' , ";
 		}
 
 		if(flag==1) {

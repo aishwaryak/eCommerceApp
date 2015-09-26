@@ -9,15 +9,15 @@ var app  = express();
 var session = require('express-session');
 var path = require('path');
 
-var BetterMemoryStore = require(__dirname + '/memory')
-var store = new BetterMemoryStore({ expires: 1000, debug: true })
+/*var BetterMemoryStore = require(__dirname + '/memory')
+var store = new BetterMemoryStore({ expires: 1000, debug: true })*/
 
 
 app.use(session({
   resave: false, 
   saveUninitialized: true, 
   secret: 'SecretCode',
-  store:store,
+  /*cookie:{maxAge:new Date(Date.now() + (20 * 1000))} */ //TODO - as of now it is 20 seconds
   rolling:true
 }));
 
@@ -34,6 +34,7 @@ app.use(session({
   rolling: true
 }));
 */
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 function REST(){

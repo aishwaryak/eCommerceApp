@@ -2,17 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
-
-//Connectin to MYSQL Database
-var connection = mysql.createConnection({
-    host     : 'mysql-instance1.c90szr4335oh.us-west-2.rds.amazonaws.com',
-    user     : 'root',
-    password : 'aishwarya',
-    database : 'ecommercedb',
-    port:3306
-});
-
-connection.connect();
+var connection = require('./../configuration/mySqlConnection');
 
 /* For viewing products */
 router.get('/', function(req, res) {

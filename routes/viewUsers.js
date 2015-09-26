@@ -2,17 +2,8 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mysql      = require('mysql');
+var connection = require('./../configuration/mySqlConnection');
 
-//Connectin to MYSQL Database
-var connection = mysql.createConnection({
-    host     : 'mysql-instance1.c90szr4335oh.us-west-2.rds.amazonaws.com',
-    user     : 'root',
-    password : 'aishwarya',
-    database : 'ecommercedb',
-    port:3306
-});
-
-connection.connect();
 
 /* To view users */
 router.get('/', function(req, res) {
@@ -23,26 +14,26 @@ router.get('/', function(req, res) {
     var sessionID = req.sessionID;
     var userInputSessionID = req.query.sessionID;
 
-         if(role === "admin") {
+         if(typeof role != 'undefined' && role === "admin") {
         //Only admin can view users
 
         var query = "SELECT * FROM users_table WHERE firstname LIKE ";//?? OR lastname LIKE ??";
 
         //Check the first and last name sent in request
-        if(typeof req.query.fName == 'undefined' || req.query.fName.length <=0 ) {
-            fName="'%'";
+        if(typeof req.query.fname == 'undefined' || req.query.fname.length <=0 ) {
+            fname="'%'";
         } else {
-            fName="'%"+req.query.fName+"%'";
+            fname="'%"+req.query.fname+"%'";
         }
 
-        query=query+fName+" AND lastname LIKE ";
+        query=query+fname+" AND lastname LIKE ";
          
-        if(typeof req.query.lName == 'undefined' || req.query.lName.length <=0 ) {
-            lName="'%'";    
+        if(typeof req.query.lname == 'undefined' || req.query.lname.length <=0 ) {
+            lname="'%'";    
         } else {
-            lName="'%"+req.query.lName+"%'";
+            lname="'%"+req.query.lname+"%'";
         }   
-        query = query+lName;
+        query = query+lname;
 
         //console.log("Query:"+query);
 
