@@ -21,9 +21,7 @@ create table products_table(
 	price decimal,
 	PRIMARY KEY (product_id));
 
-LOAD DATA LOCAL INFILE 'Eng-Data-Scalable/restTrial/myrestapp/products_table.txt' INTO TABLE products_table;
-
-#LOAD DATA LOCAL INFILE 'sample.txt' INTO TABLE products_table; //when sample is in home
+LOAD DATA LOCAL INFILE 'products_table.txt' INTO TABLE products_table;
 
 select * from products_table;
 
@@ -34,7 +32,7 @@ create table category_table(
 	category_name varchar(100),
 	PRIMARY KEY (category_id));
 
-LOAD DATA LOCAL INFILE 'Eng-Data-Scalable/restTrial/myrestapp/category_table.txt' INTO TABLE category_table;	
+LOAD DATA LOCAL INFILE 'category_table.txt' INTO TABLE category_table;	
 
 select * from category_table;
 
@@ -46,7 +44,7 @@ create table product_category_table(
 	FOREIGN KEY (product_id) REFERENCES products_table(product_id),
 	FOREIGN KEY (category_id) REFERENCES category_table(category_id));
 
-LOAD DATA LOCAL INFILE 'Eng-Data-Scalable/restTrial/myrestapp/product_category_table.txt' INTO TABLE product_category_table;
+LOAD DATA LOCAL INFILE 'product_category_table.txt' INTO TABLE product_category_table;
 
 select * from product_category_table;
 

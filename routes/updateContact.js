@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
     var hasExpired = checkSession.isSessionActive(req, function(response){
         console.log(response);
     });
-
+    
     ///////////////////////////////////////////////////////////////////////
 
 	var sessionID = req.sessionID;
