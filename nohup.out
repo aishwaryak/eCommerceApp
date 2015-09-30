@@ -1,0 +1,42 @@
+Server running at Port 8000.
+
+Error: getaddrinfo ENOTFOUND
+    at errnoException (dns.js:37:11)
+    at Object.onanswer [as oncomplete] (dns.js:124:16)
+    --------------------
+    at Protocol._enqueue (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/mysql/lib/protocol/Protocol.js:135:48)
+    at Protocol.handshake (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/mysql/lib/protocol/Protocol.js:52:41)
+    at Connection.connect (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/mysql/lib/Connection.js:123:18)
+    at Object.<anonymous> (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/routes/register.js:15:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+Getting connection.. 
+Server running at Port 8000.
+Getting connection.. 
+Server running at Port 8000.
+Before logging out session : [object Object]
+After logging out session : [object Object]
+After logging out sessionID : Pfr41aBwKmYWvR1lqP7k0lKqgbktk3UZ
+Before logging out session : [object Object]
+After logging out session : [object Object]
+After logging out sessionID : Pfr41aBwKmYWvR1lqP7k0lKqgbktk3UZ
+Getting connection.. 
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: listen EADDRINUSE
+    at errnoException (net.js:901:11)
+    at Server._listen2 (net.js:1039:14)
+    at listen (net.js:1061:10)
+    at Server.listen (net.js:1135:5)
+    at EventEmitter.listen (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/express/lib/application.js:617:24)
+    at REST.startServer (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/app.js:75:11)
+    at REST.configureExpress (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/app.js:71:12)
+    at /home/ubuntu/eCommerceApp-Ver2/eCommerceApp/app.js:59:16
+    at Handshake.onConnect (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/mysql/lib/Pool.js:59:7)
+    at Handshake.Sequence.end (/home/ubuntu/eCommerceApp-Ver2/eCommerceApp/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
