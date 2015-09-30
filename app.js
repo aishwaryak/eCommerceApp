@@ -15,7 +15,8 @@ var store = new BetterMemoryStore({ expires: 1000, debug: true })*/
 
 app.use(session({
   resave: false, 
-  saveUninitialized: true, 
+  saveUninitialized: true,
+  name:'ecommerceSession', 
   secret: 'SecretCode',
   /*cookie:{maxAge:new Date(Date.now() + (20 * 1000))} */ //TODO - as of now it is 20 seconds
   rolling:true
