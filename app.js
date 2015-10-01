@@ -8,12 +8,18 @@ var app  = express();
 
 var session = require('express-session');
 var path = require('path');
-
+var RedisStore = require('connect-redis')(express);
 /*var BetterMemoryStore = require(__dirname + '/memory')
 var store = new BetterMemoryStore({ expires: 1000, debug: true })*/
 
+app.use(express.session({ store: new RedisStore }));
 
 app.use(session({
+  store: new RedisStore({
+      host:'127.0.0.1',
+      port:6380,
+      prefix:'sess'
+  }),
   resave: false, 
   saveUninitialized: true,
   name:'ecommerceSession', 
@@ -47,9 +53,11 @@ REST.prototype.connectMysql = function() {
     var self = this;
     var pool      =    mysql.createPool({
         connectionLimit : 100,
-        host     : 'localhost',
+        /*host     : 'localhost',*/
+        host     : 'mysql-instance1.ckjgb2zflews.us-east-1.rds.amazonaws.com',
         user     : 'root',
-        password : 'root',
+        /*password : 'root',*/
+        password : 'aishwarya',
         database : 'ecommercedb',
         debug    :  false
     });
