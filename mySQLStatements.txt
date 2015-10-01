@@ -71,3 +71,16 @@ insert into users_table(firstname,lastname,role,address,city,state,zip,email,use
 insert into users_table(firstname,lastname,role,address,city,state,zip,email,username,password) values('Jenny','Admin','admin','3 C street','Pittsburgh','PA','15213','jadmin@g.com','jadmin','admin');
 
 SELECT * FROM users_table;
+
+drop table session_info_table;
+
+SET time_zone='+00:00';
+
+create table session_info_table(
+	session_id varchar(50) NOT NULL,
+	user_id int,
+	PRIMARY KEY (session_id),
+	FOREIGN KEY (user_id) REFERENCES users_table(user_id));
+
+select * from session_info_table;
+

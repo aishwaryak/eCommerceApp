@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mysql      = require('mysql');
 var connection = require('./../configuration/mySqlConnection');
 
+
 /* For user log in */
 router.post('/', function(req, res) {
 
@@ -21,12 +22,15 @@ router.post('/', function(req, res) {
              else {
 
                 //Correct login - set session expiry to 15 minutes
-                req.session.cookie.maxAge = new Date(Date.now() + (15 * 60 * 1000));
+                req.session.cookie.maxAge = new Date(Date.now() + (1 * 60 * 1000));
+                //req.session.cookie.maxAge = new Date(Date.now() + (8 * 1000));
 
                 //Store user related information in session
                 req.session.username = req.body.username;
                 req.session.role = rows[0].role;
                 req.session.userID = rows[0].user_id;
+
+                insertSessionInfo(req);
 
                 if(rows[0].role === "admin") {
                     //Admin menu
@@ -39,5 +43,22 @@ router.post('/', function(req, res) {
         }
     });
 });
+
+function insertSessionInfo(req) {
+    var userID = req.session.userID;
+
+    // timestamp with UTC time
+    //console.log(moment.utc());
+    //console.log(moment.utc().format('ddd MMM DD YYYY HH:mm:ss z'));
+
+    query = "insert into session_info_table values('"+req.sessionID+"','"+userID+"');";
+
+    console.log("Query : "+query);
+    connection.query(query,function(err,rows){
+        if(err) {
+            console.log(err);
+        }
+    });
+}
 
 module.exports = router;
