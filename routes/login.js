@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
              else {
 
                 //Correct login - set session expiry to 15 minutes
-                req.session.cookie.maxAge = new Date(Date.now() + (15 * 60 * 1000));
+                req.session.cookie.maxAge = new Date(Date.now() + ( 15 * 60 * 1000));
                 //req.session.cookie.maxAge = new Date(Date.now() + (8 * 1000));
 
                 //Store user related information in session
