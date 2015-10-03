@@ -5,7 +5,7 @@ var mysql      = require('mysql');
 var connection = require('./../configuration/mySqlConnection');
 var moment = require('moment');
 
-var isValidSession = function(req, callback) {
+/*var isValidSession = function(req, callback) {
 	var isValid;
 	var sessionID = req.sessionID;
 
@@ -30,6 +30,15 @@ var isValidSession = function(req, callback) {
         }
 		return callback(isValid);
     });
+};*/
+
+var isValidSession = function(req, callback) {
+    var isValid = false;
+    var sessionID = req.sessionID;
+
+    if(typeof sessionID!= undefined)
+        isValid = true;
+    return callback(isValid);
 };
 
 module.exports.isValidSession = isValidSession;

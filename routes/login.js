@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
              else {
 
                 //Correct login - set session expiry to 15 minutes
-                req.session.cookie.maxAge = new Date(Date.now() + ( 15 * 60 * 1000));
+                req.session.cookie.maxAge = new Date(Date.now() + (  15 * 60 * 1000));
                 //req.session.cookie.maxAge = new Date(Date.now() + (8 * 1000));
 
                 //Store user related information in session
@@ -54,11 +54,11 @@ function insertSessionInfo(req) {
     query = "insert into session_info_table values('"+req.sessionID+"','"+userID+"');";
 
     console.log("Query : "+query);
-    connection.query(query,function(err,rows){
+    /*connection.query(query,function(err,rows){
         if(err) {
             console.log(err);
         }
-    });
+    });*/
 }
 
 module.exports = router;

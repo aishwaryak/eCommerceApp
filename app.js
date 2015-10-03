@@ -29,10 +29,24 @@ var store = new BetterMemoryStore({ expires: 1000, debug: true })*/
 };
 
 var sessionStore = new SessionStore(options);*/
+var SessionStore = require('express-mysql-session');
+
+var options = {
+    /*host: 'localhost',*/
+    host     : 'mysql-instance1.ckjgb2zflews.us-east-1.rds.amazonaws.com',
+    port: 3306,
+    user: 'root',
+    /*password: 'root',*/
+    password: 'aishwarya',
+    database: 'ecommercedb'
+};
+
+var sessionStore = new SessionStore(options);
 
 
 app.use(session({
-  store: new redisStore({ host: 'localhost', port: 8000, client: client,ttl :  260}),
+  /*store: new redisStore({ host: 'localhost', port: 8000, client: client,ttl :  260}),*/
+  store: sessionStore,
   resave: false, 
   saveUninitialized: true,
   name:'ecommerceSession', 
@@ -66,11 +80,11 @@ REST.prototype.connectMysql = function() {
     var self = this;
     var pool      =    mysql.createPool({
         connectionLimit : 100,
-        host     : 'localhost',
-        /*host     : 'mysql-instance1.ckjgb2zflews.us-east-1.rds.amazonaws.com',*/
+        /*host     : 'localhost',*/
+        host     : 'mysql-instance1.ckjgb2zflews.us-east-1.rds.amazonaws.com',
         user     : 'root',
-        password : 'root',
-        /*password : 'aishwarya',*/
+        /*password : 'root',*/
+        password : 'aishwarya',
         database : 'ecommercedb',
         debug    :  false
     });
