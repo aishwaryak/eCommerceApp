@@ -1,6 +1,6 @@
 todo
 ----
-1. session time of 15 mins
+-- session time of 15 mins
 --- role checking - admin/customer in certain pages
 --- Register - there was a problem with your registration(With existing user name)
 --- different menu output based on roles in login page

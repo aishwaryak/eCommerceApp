@@ -27,6 +27,8 @@ router.post('/', function(req, res) {
 	updateQuery = updateQuery+ " WHERE product_id = "+productId+"";
 
 	if(role === "admin") {
+
+		console.log("!!! "+updateQuery);
 		connection.query(updateQuery,function(err,rows){
 		    if(err) {
 		        res.json({"Message" : "There was a problem with this action"});

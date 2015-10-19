@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
          if(typeof role != 'undefined' && role === "admin") {
         //Only admin can view users
 
-        var query = "SELECT * FROM users_table WHERE firstname LIKE ";//?? OR lastname LIKE ??";
+        var query = "SELECT firstname,lastname FROM users_table WHERE firstname LIKE ";//?? OR lastname LIKE ??";
 
         //Check the first and last name sent in request
         if(typeof req.query.fname == 'undefined' || req.query.fname.length <=0 ) {

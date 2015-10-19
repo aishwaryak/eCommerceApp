@@ -71,7 +71,12 @@ router.get('/', function(req, res) {
 	        if(err) {
 	            res.json({"Error" : true, "Message" : "Error executing MySQL query"});
 	        } else {
-	        	products.push(rows);
+	        	//TODO
+	        	for(var attributename in rows){
+				    //console.log(attributename+": "+rows[attributename]['productTitle']);
+				    products.push(rows[attributename]['productTitle']);
+				}
+	        	//console.log(rows['productTitle']);
 	        	product_list.products = products;
 	        	res.json(product_list);
 	        }

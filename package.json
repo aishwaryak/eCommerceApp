@@ -22,6 +22,7 @@
     "serve-favicon": "~2.3.0",
     "connect": "1.8.5",
     "redis": "~2.0.1",
-    "express-mysql-session":"~0.4.1"
+    "express-mysql-session":"~0.4.1",
+    "line-reader":"~0.3.0"
   }
 }

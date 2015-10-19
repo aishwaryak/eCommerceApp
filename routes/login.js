@@ -34,10 +34,10 @@ router.post('/', function(req, res) {
 
                 if(rows[0].role === "admin") {
                     //Admin menu
-                    res.json({"Success" : true, "AdminMenu1" : "AdminMenu...", "AdminMenu2" : "AdminMenu...", "SessionID" :req.sessionID});
+                    res.json({"Success" : true, "AdminMenu1" : "/logout", "AdminMenu2" : "/updateInfo", "AdminMenu3":"/modifyProduct","AdminMenu4":"/viewUsers","AdminMenu5":"/getProducts","SessionID" :req.sessionID});
                 } else {
                     //Customer menu
-                    res.json({"Success" : true, "Menu1" : "Menu1", "Menu2" : "Menu2", "SessionID" :req.sessionID});
+                    res.json({"Success" : true, "Menu1" : "/logout", "Menu2" : "/updateInfo", "Menu3":"/getProducts", "SessionID" :req.sessionID});
                 }
              }
         }
