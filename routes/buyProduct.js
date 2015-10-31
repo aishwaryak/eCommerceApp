@@ -50,7 +50,7 @@ function buyProduct(currentQuantity,req,res) {
     	});
 
 	} else {
-		res.json({"message" : "02 - that product is out of stock"});
+		res.json({"message" : "03 - that product is out of stock"});
 	}
 }
 
