@@ -722,7 +722,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="productId" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${product_counter}</stringProp>
+                <stringProp name="Argument.value">100</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">productId</stringProp>
