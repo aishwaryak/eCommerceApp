@@ -89,6 +89,52 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Select Orders Table" enabled="true">
+          <stringProp name="dataSource">sample</stringProp>
+          <stringProp name="query">select * from orders_table;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <threadCounts>true</threadCounts>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Update Products Table" enabled="true">
           <stringProp name="dataSource">sample</stringProp>
           <stringProp name="queryType">Update Statement</stringProp>
