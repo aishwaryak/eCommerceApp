@@ -14,6 +14,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     var viewUsersController = require('./routes/viewUsers');
     var modifyProductController = require('./routes/modifyProduct');
     var viewProductsController = require('./routes/viewProducts');
+    var buyProductsController = require('./routes/buyProduct');
+    var getOrdersController = require('./routes/getOrders'); 
 
     router.use("/health",health);
 	router.use("/registerUser",registerController);
@@ -23,7 +25,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     router.use("/viewUsers",viewUsersController);
     router.use("/modifyProduct",modifyProductController);
     router.use("/getProducts",viewProductsController);
-    
+    router.use("/buyProduct",buyProductsController);
+    router.use("/getOrders",getOrdersController);
 
 }
 

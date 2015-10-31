@@ -96,3 +96,29 @@ insert into users_table(firstname,lastname,role,address,city,state,zip,email,use
 insert into users_table(firstname,lastname,role,address,city,state,zip,email,username,password) values('Jenny','Admin','admin','3 C street','Pittsburgh','PA','15213','jadmin@g.com','jadmin','admin');
 
 SELECT * FROM users_table;
+
+/*Assignment 5*/
+
+drop table product_inventory_table;
+
+create table product_inventory_table(
+	product_id int,
+	quantity int,
+	PRIMARY KEY (product_id),
+	FOREIGN KEY (product_id) REFERENCES products_table(product_id));
+
+drop table orders_table;
+
+create table orders_table(
+	product_id int,
+	quantity_sold int,
+	PRIMARY KEY (product_id),
+	FOREIGN KEY (product_id) REFERENCES products_table(product_id));
+
+INSERT INTO product_inventory_table
+(product_id)
+SELECT product_id
+FROM products_table;
+
+UPDATE product_inventory_table SET quantity=5;
+
