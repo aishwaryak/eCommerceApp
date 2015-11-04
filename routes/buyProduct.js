@@ -12,17 +12,20 @@ router.post('/', function(req, res) {
 		//TODO - change table name
 		var query = "SELECT quantity FROM product_inventory_table WHERE product_id="+req.body.productId;
 
-	    connection.query(query,function(err,rows){
-	        if(err) {
-	        	console.log("Error : "+err);
-	        } else {
-	            //console.log(rows[0].quantity);
-	            var currentQuantity = rows[0].quantity;
-	            buyProduct(currentQuantity,req,res);
-	
-	        }
-	    });
+		    connection.query(query,function(err,rows){
+		        if(err) {
+		          	return connection.rollback(function() {
+		            	res.json({"message":"Oops! Something went wrong!"});
+		          });
+		        } else {
+		            //console.log(rows[0].quantity);
+		            var currentQuantity = rows[0].quantity;
+		            buyProduct(currentQuantity,req,res);
 		
+		        }
+		    });
+
+			
 	} else {
 		res.json({"message" : "02 - you need to log in prior to buying a product"});
 	}
@@ -35,13 +38,13 @@ function buyProduct(currentQuantity,req,res) {
     	var query = "UPDATE product_inventory_table SET quantity="+currentQuantity+" WHERE product_id="+req.body.productId;
     	connection.query(query,function(err,rows){
 	        if(err) {
-	        	console.log("Error : "+err);
+	            	res.json({"message":"Oops! Something went wrong!"});
 	        } else {
 	        	//Insert or update in the orders table
 	        	query = "INSERT INTO orders_table (product_id, quantity_sold) VALUES ("+req.body.productId+", 1) ON DUPLICATE KEY UPDATE quantity_sold = quantity_sold + 1;"
 				connection.query(query,function(err,rows){
 			        if(err) {
-			        	console.log("Error : "+err);
+		            		res.json({"message":"Oops! Something went wrong!"});
 			        } else {
 	        			res.json({"message" : "01 - The purchase has been made successfully"});
 	        		}
