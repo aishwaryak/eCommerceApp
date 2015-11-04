@@ -1,10 +1,10 @@
 var mysql = require("mysql");
-function REST_ROUTER(router,connection,md5) {
+function REST_ROUTER(router) {
     var self = this;
-    self.handleRoutes(router,connection,md5);
+    self.handleRoutes(router);
 }
 
-REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
+REST_ROUTER.prototype.handleRoutes= function(router) {
 
     var health = require('./routes/health');
 	var registerController = require('./routes/register');
