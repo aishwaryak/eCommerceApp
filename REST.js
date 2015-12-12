@@ -16,6 +16,8 @@ REST_ROUTER.prototype.handleRoutes= function(router) {
     var viewProductsController = require('./routes/viewProducts');
     var buyProductsController = require('./routes/buyProduct');
     var getOrdersController = require('./routes/getOrders'); 
+    var addRelated = require('./routes/alsoBought.js');
+    var getRecommendations = require('./routes/getRecommendations');
 
     router.use("/health",health);
 	router.use("/registerUser",registerController);
@@ -27,6 +29,8 @@ REST_ROUTER.prototype.handleRoutes= function(router) {
     router.use("/getProducts",viewProductsController);
     router.use("/buyProduct",buyProductsController);
     router.use("/getOrders",getOrdersController);
+    router.use("/alsoBought",addRelated);
+    router.use("/getRecommendations",getRecommendations);
 
 }
 

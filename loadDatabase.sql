@@ -122,3 +122,13 @@ FROM products_table;
 
 UPDATE product_inventory_table SET quantity=5;
 
+# --------------------------------------------------------------
+#Assignment 7
+create table also_bought_table(
+	product_id_first int,
+	product_id_second int,
+	PRIMARY KEY (product_id_first,product_id_second),
+	FOREIGN KEY (product_id_first) REFERENCES products_table(product_id),
+	FOREIGN KEY (product_id_second) REFERENCES products_table(product_id));
+
+alter table users_table change column state state varchar(100);
